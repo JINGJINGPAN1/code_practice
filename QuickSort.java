@@ -1,43 +1,42 @@
 public class QuickSort {
 
-    public static void sort(int[] arr, int low, int high) {
+    public static void sort(int[] arr) {
+        quickSort(arr, 0, arr.length - 1);
+    }
+
+    private static void quickSort(int[] arr, int low, int high) {
         if (low < high) {
-            int pi = partition(arr, low, high);
-            sort(arr, low, pi - 1);
-            sort(arr, pi + 1, high);
+            int pivotIndex = partition(arr, low, high);
+            quickSort(arr, low, pivotIndex - 1);
+            quickSort(arr, pivotIndex + 1, high);
         }
     }
 
-    public static int partition(int[] arr, int low, int high) {
-        int pivot = arr[high];
-        int i = low - 1;
+    private static int partition(int[] arr, int low, int high) {
+        int pivot = arr[low];
+        int i = low + 1;
 
-        for (int j = low; j < high; j++) {
+        for (int j = i; j <= high; j++) {
             if (arr[j] < pivot) {
-                i++;
                 swap(arr, i, j);
+                i++;
             }
         }
 
-        swap(arr, i+1, high);
-
-        return i + 1;
+        swap(arr, low, i - 1);
+        return i - 1;
     }
 
-    public static void swap(int[] arr, int i, int j){
+    private static void swap(int[] arr, int i, int j) {
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
-
     }
 
     public static void main(String[] args) {
-        int[] arr = {5, 1, 9, 3, 7, 2, 8, 4, 6};
-        int n = arr.length;
-
-        sort(arr, 0, n - 1);
-
-        for (int i = 0; i < n; i++) {
+        int[] arr = { 5, 2, 6, 1, 3, 9, 4 };
+        sort(arr);
+        for (int i = 0; i < arr.length; i++) {
             System.out.print(arr[i] + " ");
         }
     }
