@@ -30,10 +30,10 @@ public class WeightedQuickUnionDS {
         }
 
         if(size[rootP] < size[rootQ]){
-            rootQ = parent[rootP];
+            parent[rootP] = rootQ;
             size[rootQ] = size[rootP] + size[rootQ];
         } else{
-            rootP = parent[rootQ];
+            parent[rootQ] = rootP;
             size[rootP] = size[rootQ] + size[rootP];
         }
     }
