@@ -15,8 +15,9 @@ public class WeightedQuickUnionDSWithPathCompression {
 
     public int find(int p){
         while(p != parent[p]){
-            parent[p] = find(parent[p]);
+            p = parent[p];
         }
+        parent[p] = p;
         return parent[p];
     }
 
