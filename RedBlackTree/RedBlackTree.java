@@ -17,6 +17,28 @@ public class RedBlackTree<T extends Comparable<T>> {
         }
     }
 
+    public boolean search(T val) {
+        Node<T> node = root;
+        while (node != null) {
+            int cmp = val.compareTo(node.val);
+            if (cmp < 0) {
+                node = node.left;
+            } else if (cmp > 0) {
+                node = node.right;
+            } else {
+                // Found the value in the tree
+                return true;
+            }
+        }
+        // Value not found in the tree
+        return false;
+    }
+
+    public void insert(T val) {
+        root = insert(root, val);
+        root.color = BLACK;
+    }
+
     private Node<T> insert(Node<T> node, T val){
         if(node == null){
             return new Node<T>(val,RED);
