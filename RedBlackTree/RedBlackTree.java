@@ -1,8 +1,46 @@
 package RedBlackTree;
 
 public class RedBlackTree<T extends Comparable<T>> {
-
     private Node<T> root;
+    private static final boolean RED = true;
+    private static final boolean BLACK = false;
+
+
+
+    public class Node<T>{
+        T val;
+        public Node<T> left, right;
+        boolean color;
+        public Node(T val, boolean color){
+            this.val = val;
+            this.color = color;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+    /**private Node<T> root;
 
     private static final boolean RED = true;
     private static final boolean BLACK = false;
@@ -78,4 +116,4 @@ public class RedBlackTree<T extends Comparable<T>> {
         h.left.color = BLACK;
         h.right.color = BLACK;
     }
-}
+}*/
